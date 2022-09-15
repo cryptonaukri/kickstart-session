@@ -210,3 +210,72 @@ const { firstName, lastName, ...otherInfo } = {  firstName: "Oluwatobi", lastNam
     gender: "Male"
   }
 
+const map1 = array1.map(x => x.length > 7);
+const map2 = array1.map(x => x+7);
+
+console.log(map1);
+console.log(map2);
+
+// Promise
+// It's possible to chain after a failure, i.e. a catch, which is useful to
+//  accomplish new actions even after an action failed in the chain. Read the following example: 
+
+new Promise((resolve, reject) => {
+    console.log("Initial");
+  // some task
+    resolve();
+  })
+    .then(() => {
+      throw new Error("Something failed");
+  
+      console.log("inside then...");
+    })
+    .catch(() => {
+      console.error("Do that");
+    })
+
+
+new Promise((resolve, reject) => {
+    console.log("Initial");
+  // some task
+    resolve();
+  })
+    .then(() => {
+      console.log("inside then...");
+    },(err)=>{
+        console.log(err)
+    })
+      
+  
+
+//Async wait functions.
+// This symmetry with asynchronous code culminates in the async/await syntax:
+
+
+function doSomething(){
+    return "Do Something fun";
+}
+function doSomethingElse(aa){
+   return "second function";
+}
+function doThirdThing(aa){
+    return "third function";
+}
+
+async function foo() {
+    
+      const result = await doSomething();
+      const newResult = await doSomethingElse(result);
+      const finalResult = await doThirdThing(newResult);
+      console.log(`Got the final result: ${finalResult}`);
+ }
+foo();
+
+// //   In an ideal world, all asynchronous functions would already return promises.
+// //    Unfortunately, some APIs still expect success and/or failure callbacks to be passed in the old way.
+// //    The most obvious example is the setTimeout() function:
+
+// setTimeout(() => saySomething("10 seconds passed"), 10 * 1000);
+
+  
+
